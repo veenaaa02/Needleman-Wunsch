@@ -2,18 +2,19 @@
 <html>
     <head>
         <title>Results</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
         <style>
-            h1{
-            font-family:"Comic Sans MS",cursive,sans-serif;
-            margin-left: 160px;
-            font-weight: 400;
-            font-style: initial;
-            margin-left: 120px;
+        h1{
+            font-family:'Poppins', sans-serif;;
+            text-align: center;
+            font-weight: 700;
+            font-size: 52px;
         }
         h2{
-            font-family:"Comic Sans MS",cursive,sans-serif;
+            font-family:'Poppins', sans-serif;;
             margin-left: 80px;
             font-weight: 400;
+            font-size: 38px;
         }
         body{
             background-color:#aed0e2;
@@ -23,14 +24,51 @@
         }
         p{
             margin-left: 40px;
+            font-weight: 700;
         }
-        .container{
-        background:white;
-        padding:35px;
-        border-radius:25px;
-        width:350px;
-        text-align:center;
-        box-shadow:0px 8px 20px rgba(0,0,0,0.15);
+        h3{
+            font-size:x-large;
+            margin-left:40px;
+            font-family:'Poppins', sans-serif;
+        }
+        table{
+            border-collapse: collapse;
+            margin: 30px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            margin-left: 100px;
+        }
+        th,
+        td{
+            width:60px;
+            height:60px;
+            text-align:center;
+            border:1px solid rgba(255,255,255,0.15);
+            font-size:18px;
+        }
+        th{
+            background: #5C88A8;
+            color:white;
+            font-weight:bold;
+        }
+        td{
+            background: #EAF4FB;
+            color: #2D3E50;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid #BFD7EA;
+            transition:0.3s;
+        }
+        td:hover{
+            background: #c5e2f4;
+            transform:scale(1.08);
+            cursor:pointer;
+        }
+        .path{
+            background:#81D4FA;
+            color:#0D47A1;
+            font-weight:bold;
         }
         </style>
     </head>
@@ -39,5 +77,30 @@
         <p><strong>Aligned Sequence 1: </strong>{{align1}}</p>
         <p><strong>Aligned Sequence 2: </strong>{{align2}}</p>
         <h2>Score: {{score}}</h2>
+        <h3><strong>Scoring Matrix</strong></h3>
+        <table>
+            <tr>
+                <th></th>
+                <th>-</th>
+                {% for ch in seq2 %}
+                <th>{{ch}}</th>
+                {% endfor %}
+            </tr>
+            {% for row in matrix %}
+            <tr>
+                {% if loop.first %}
+                <th>-</th>
+                {% else %}
+                <th>{{ seq1[loop.index0-1] }}</th>
+                {% endif %}
+                {% set row_index = loop.index0 %}
+                {% for cell in row %}
+                <td class="{% if (row_index, loop.index0) in traceback %}path{% endif %}">
+                    {{cell}}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
     </body>
 </html>

@@ -47,7 +47,9 @@ def align():
     align2=""
     i=rows-1
     j=cols-1
+    traceback=[]
     while i>0 or j>0:
+        traceback.append((i,j))
         if i>0 and j>0:
             if seq1[i-1]==seq2[j-1]:
                 score=match
@@ -69,6 +71,7 @@ def align():
         else:
             print("Backtracking error")
             break
+    traceback.append((0,0))
     align1=align1[::-1]
     align2=align2[::-1]
     i=0
@@ -80,6 +83,6 @@ def align():
             score+=match
         else:
             score+=mismatch
-    return render_template("results.html",align1=align1,align2=align2,score=score)
+    return render_template("results.html",align1=align1,align2=align2,score=score,matrix=matrix,seq1=seq1,seq2=seq2,traceback=traceback)
 if __name__=="__main__":
     app.run(debug=True)
