@@ -45,7 +45,7 @@ needleman-wunsch/
 │
 ├── static/
 │   └── DNA.json
-├──videos
+├──videos/
 |   └── sample.gif
 ├──requirements.txt
 README.md
