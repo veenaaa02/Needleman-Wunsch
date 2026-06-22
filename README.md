@@ -44,14 +44,16 @@ needleman-wunsch/
 │   └── error.html
 │
 ├── static/
-│   └── styles.css
+│   └── DNA.json
+├──videos
+|   └── sample.gif
 ├──requirements.txt
 README.md
 ```
 
 ---
 
-## 🎥 Project Demo
+## Project Demo
 
 [▶ Watch Demo](needleman-wunsch/videos/sample.gif)
 
