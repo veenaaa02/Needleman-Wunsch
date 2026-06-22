@@ -45,8 +45,8 @@ needleman-wunsch/
 │
 ├── static/
 │   └── styles.css
-│
-└── README.md
+├──requirements.txt
+README.md
 ```
 
 ---
