@@ -53,7 +53,7 @@ README.md
 
 ## 🎥 Project Demo
 
-[▶ Watch Demo](needleman-wunsch/videos/demo.gif)
+[▶ Watch Demo](.needleman-wunsch/videos/sample.gif)
 
 
 ## Installation
