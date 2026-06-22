@@ -105,7 +105,7 @@ def align():
         else:
             score+=mismatch
             mismatch_count+=1
-    identity=(match_count/length)*100
+    identity=round((match_count/length)*100,2)
     return render_template("results.html",align1=align1,align2=align2,score=score,matrix=matrix,seq1=seq1,
                            seq2=seq2,traceback=traceback,gap_count=gap_count,match_count=match_count,
                            mismatch_count=mismatch_count,length=length,identity=identity)
