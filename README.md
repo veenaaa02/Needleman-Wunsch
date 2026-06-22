@@ -51,6 +51,11 @@ README.md
 
 ---
 
+## 🎥 Project Demo
+
+[▶ Watch Demo](./videos/demo.mp4)
+
+
 ## Installation
 
 Clone the repository
@@ -130,16 +135,6 @@ The application displays
 - Space Complexity: **O(m × n)**
 
 where **m** and **n** are the lengths of the input sequences.
-
----
-
-## Future Improvements
-
-- Traceback path highlighting
-- FASTA file upload
-- Protein substitution matrices (BLOSUM/PAM)
-- Download alignment report
-- Multiple sequence alignment support
 
 ---
 
