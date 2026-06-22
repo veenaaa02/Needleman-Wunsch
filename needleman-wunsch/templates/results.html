@@ -30,6 +30,7 @@
             font-size:x-large;
             margin-left:40px;
             font-family:'Poppins', sans-serif;
+            margin-top: 60px;
         }
         table{
             border-collapse: collapse;
@@ -77,7 +78,15 @@
         <p><strong>Aligned Sequence 1: </strong>{{align1}}</p>
         <p><strong>Aligned Sequence 2: </strong>{{align2}}</p>
         <h2>Score: {{score}}</h2>
-        <h3><strong>Scoring Matrix</strong></h3>
+        <div class="stat">
+            <h3>Alignment Statistics</h3>
+            <p><strong>Matches: {{match_count}}</strong></p>
+            <p><strong>Mismatches: {{mismatch_count}}</strong></p>
+            <p><strong>Gaps: {{gap_count}}</strong></p>
+            <p><strong>Alignment length: {{length}}</strong></p>
+            <p><strong>Identity: {{identity}}%</strong></p>
+        </div>
+        <h3 type="head3"><strong>Scoring Matrix</strong></h3>
         <table>
             <tr>
                 <th></th>

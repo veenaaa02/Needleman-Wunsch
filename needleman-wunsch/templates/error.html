@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+        .card{
+            background:white;
+            padding:40px;
+            width:420px;
+            text-align:center;
+            border-radius:15px;
+            box-shadow:0 10px 30px rgba(0,0,0,.3);
+        }
+        h1{
+            color:#d32f2f;
+        }
+        p{
+            font-size:18px;
+            margin:20px 0;
+        }
+        a{
+            display:inline-block;
+            padding:12px 28px;
+            background:#2196f3;
+            color:white;
+            text-decoration:none;
+            border-radius:8px;
+            margin-top:15px;
+        }
+        a:hover{
+            background:#1565c0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>⚠ Error</h1>
+    <p>{{ message }}</p>
+    <a href="/">Go Back</a>
+</div>
+</body>
+</html>

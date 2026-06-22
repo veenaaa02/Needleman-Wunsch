@@ -15,12 +15,27 @@ def align():
     match=int(request.form["match"])
     mismatch=int(request.form["mismatch"])
     gap=int(request.form["gap"])
+    if not seq1 or not seq2:
+        return render_template("error.html",message="Please enter both DNA sequences.")
+    if not match or not mismatch or not gap:
+        return render_template("error.html",message="Please enter all scoring values.")
+    valid = set("ACGTURNDCQEGHILKMFPSTWYV")
+    if any(ch not in valid for ch in seq1):
+        return render_template("error.html",message="Sequence 1 contains invalid characters. Please enter a valid DNA, RNA, or protein sequence.")
+    if any(ch not in valid for ch in seq2):
+        return render_template("error.html",message="Sequence 2 contains invalid characters. Please enter a valid DNA, RNA, or protein sequence.")
     if match<=0:
-        return render_template("index.html",error="Match should be positive")
+        return render_template("error.html",message="Match should be positive")
     if mismatch>=0:
-        return render_template("index.html",error="Mismatch should be negative")
+        return render_template("error.html",message="Mismatch should be negative")
     if gap>=0:
-        return render_template("index.html",error="Gap Penalty should be negative")
+        return render_template("error.html",message="Gap Penalty should be negative")
+    try:
+        match = int(match)
+        mismatch = int(mismatch)
+        gap = int(gap)
+    except ValueError:
+        return render_template("error.html",message="Match, mismatch and gap values must be integers.")
     rows=len(seq1)+1
     cols=len(seq2)+1
     matrix=[]
@@ -74,15 +89,25 @@ def align():
     traceback.append((0,0))
     align1=align1[::-1]
     align2=align2[::-1]
+    length=len(align1)
     i=0
     score=0
+    match_count=0
+    mismatch_count=0
+    gap_count=0
     for i in range(len(align1)):
         if align1[i]=="-" or align2[i]=="-":
             score+=gap
+            gap_count+=1
         elif align1[i]==align2[i]:
             score+=match
+            match_count+=1
         else:
             score+=mismatch
-    return render_template("results.html",align1=align1,align2=align2,score=score,matrix=matrix,seq1=seq1,seq2=seq2,traceback=traceback)
+            mismatch_count+=1
+    identity=(match_count/length)*100
+    return render_template("results.html",align1=align1,align2=align2,score=score,matrix=matrix,seq1=seq1,
+                           seq2=seq2,traceback=traceback,gap_count=gap_count,match_count=match_count,
+                           mismatch_count=mismatch_count,length=length,identity=identity)
 if __name__=="__main__":
     app.run(debug=True)
